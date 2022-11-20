@@ -6,5 +6,4 @@ class baseClass:
     def injection(self):
         raise NotImplementedError()
     def result(self):
-        
         raise NotImplementedError()
