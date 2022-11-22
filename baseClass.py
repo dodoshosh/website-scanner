@@ -21,7 +21,6 @@ class XSS(baseClass):
         queries_list=file_data.split('^')
         for sql_querie in queries_list:
             print('\n',sql_querie,'\n')
-
 obj=baseClass("a")
 sqlobj=SQL(obj)
 sqlobj.injection()
