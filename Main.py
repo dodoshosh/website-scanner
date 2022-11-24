@@ -1,7 +1,8 @@
-import SqlClass
-import XssClass
-import baseClass
+from SqlClass import SQL
+import XssClass as XC
+from baseClass import baseClass
 
-obj = baseClass("a")
-sqlobj = SQL(obj)
-sqlobj.injection()
+if __name__ == "__main__":
+    obj = baseClass("a")
+    sqlobj = SQL(obj)
+    sqlobj.injection()
