@@ -1,7 +1,11 @@
-# import module
-import webbrowser
 import requests
+import webbrowser
+from selenium import webdriver
+
+
 class baseClass:
+    public_DRIVER = webdriver.Chrome(executable_path="C:\chromedriver.exe")
+
     def __init__(self, URL):
         self.URL = URL
 
@@ -14,6 +18,7 @@ class baseClass:
     def result(self):
         raise NotImplementedError()
 
+
 class SQL(baseClass):
     def injection(self):
         File_object = open(r"sql_queries.txt", "r+")
@@ -23,6 +28,7 @@ class SQL(baseClass):
             r = requests.post(url=self.URL, data=sql_query)
             print(r)
             print('\n', sql_query, '\n')
+
 
 class XSS(baseClass):
     def injection(self):
@@ -34,6 +40,7 @@ class XSS(baseClass):
             print(r)
             print('\n', xss_query, '\n')
 
-base=baseClass("saa")
-sql_class=SQL(base)
+
+base = baseClass("saa")
+sql_class = SQL(base)
 sql_class.injection()
