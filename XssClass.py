@@ -16,5 +16,15 @@ class XSS(baseClass):
         File_object = open(r"xss_queries.txt", "r+")
         file_data = File_object.read()
         queries_list = file_data.split('^')
-        for sql_query in queries_list:
-            print('\n', sql_query, '\n')
+
+        inputsToInject = self.scanning()
+
+        for inputToInj in inputsToInject:
+            for sql_query in queries_list:
+                inputToInj.send_keys(sql_query)
+                successed = self.checkSuccess()
+                if successed:
+                    print("Vuln Founded")
+
+    def checkSuccess(self):#Will be implemented later
+        print("Checking...")
