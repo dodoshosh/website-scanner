@@ -10,13 +10,22 @@ class SQL(baseClass):
         inputsToInject = baseClass.public_DRIVER.find_elements(By.XPATH, "//input[@type=\"text\" or @type=\"search\" or "
                                                                             "@type=\"email\" or @type=\"password\" or @type=\"url\"]")
                                                                                                 #specifcly made for the input type we need
-
-
+        return inputsToInject
 
     def injection(self):
         File_object = open(
             r"C:\Users\magshimim\\Documents\magshimim\\Web Vulns Scanner\\Shimon\hadera-804-shimon\\sql_queries.txt", "r+")
         file_data = File_object.read()
         queries_list = file_data.split('^')
-        for sql_query in queries_list:
-            print('\n', sql_query, '\n')
+
+        inputsToInject = self.scanning()
+
+        for inputToInj in inputsToInject:
+            for sql_query in queries_list:
+                inputToInj.send_keys(sql_query)
+                successed = self.checkSuccess()
+                if successed:
+                    print("Vuln Founded")
+
+    def checkSuccess(self): #Will be implemented later
+        print("Checking...")
