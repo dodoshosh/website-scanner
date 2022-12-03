@@ -1,5 +1,6 @@
 from baseClass import baseClass
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
 
 
 class XSS(baseClass):
@@ -27,4 +28,5 @@ class XSS(baseClass):
                     print("Vuln Founded")
 
     def checkSuccess(self):#Will be implemented later
-        print("Checking...")
+        if EC.alert_is_present():
+            print("Xss Injection Succeeded")
