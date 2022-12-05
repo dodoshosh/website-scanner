@@ -28,6 +28,6 @@ class XSS(baseClass):
                 if successed:
                     print("Vuln Founded")
 
-    def checkSuccess(self):#Will be implemented later
+    def checkSuccess(self):
         if EC.alert_is_present():
             print("Xss Injection Succeeded")
