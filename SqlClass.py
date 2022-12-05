@@ -26,9 +26,14 @@ class SQL(baseClass):
                 inputToInj.send_keys(sql_query)
                 successed = self.checkSuccess(sql_query)
                 if successed:
-                    print("Vuln Founded")
+                    print("Vuln Founded\n")
 
     def checkSuccess(self, query):
         print("Checking...")
         if query in baseClass.public_DRIVER.page_source:
-            print("SQL Injection Succeeded")
+            print("SQL Injection Succeeded\n")
+            return True
+        elif baseClass.public_DRIVER.current_url() is not self.URL:
+            print("SQL Injection Succeeded\n")
+            return True
+        return False

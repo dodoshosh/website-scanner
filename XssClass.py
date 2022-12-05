@@ -26,8 +26,10 @@ class XSS(baseClass):
                 inputToInj.send_keys(sql_query)
                 successed = self.checkSuccess()
                 if successed:
-                    print("Vuln Founded")
+                    print("Vuln Founded\n")
 
     def checkSuccess(self):
         if EC.alert_is_present():
-            print("Xss Injection Succeeded")
+            print("Xss Injection Succeeded\n")
+            return True
+        return False
