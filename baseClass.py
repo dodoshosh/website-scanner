@@ -1,13 +1,12 @@
 import requests
 import webbrowser
 from selenium import webdriver
-
-
-class baseClass:
+from abc import ABC, abstractmethod
+class baseClass(ABC):
     public_DRIVER = webdriver.Chrome(executable_path="C:\chromedriver.exe")
-
+    @abstractmethod
     def __init__(self, URL):
-        self.URL = URL
+        pass
 
     def scanning(self):
         raise NotImplementedError()
@@ -19,6 +18,9 @@ class baseClass:
         raise NotImplementedError()
 
 
+
+
+'''
 class SQL(baseClass):
     def injection(self):
         File_object = open(r"sql_queries.txt", "r+")
@@ -39,8 +41,4 @@ class XSS(baseClass):
             r = requests.post(url=self.URL, data=xss_query)
             print(r)
             print('\n', xss_query, '\n')
-
-
-base = baseClass("saa")
-sql_class = SQL(base)
-sql_class.injection()
+'''
