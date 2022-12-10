@@ -1,6 +1,8 @@
 from baseClass import baseClass
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.common import exceptions
+
 
 
 class XSS(baseClass):
@@ -21,15 +23,32 @@ class XSS(baseClass):
 
         inputsToInject = self.scanning()
 
-        for inputToInj in inputsToInject:
+        for i in range(len(inputsToInject)):
             for sql_query in queries_list:
-                inputToInj.send_keys(sql_query)
-                successed = self.checkSuccess()
-                if successed:
-                    print("Vuln Founded\n")
+                try:
+                    inputToInj = inputsToInject[i]
+                    inputToInj.clear()
+                    inputToInj.send_keys(sql_query)
+                    baseClass.public_DRIVER.find_element(By.XPATH, "//input[@type='submit']").click()
+                    successed = self.checkSuccess()
+
+                    if successed:
+                        print("Vuln Founded\n")
+                        return
+
+                except exceptions.StaleElementReferenceException:
+                    inputsToInject = self.scanning()
+
+
 
     def checkSuccess(self):
-        if EC.alert_is_present():
-            print("Xss Injection Succeeded\n")
-            return True
-        return False
+        try:
+            if baseClass.public_DRIVER.switch_to.alert:
+                if baseClass.public_DRIVER.switch_to.alert.text == "1":
+                    print("Xss Injection Succeeded\n")
+                    return True
+                else:
+                    baseClass.public_DRIVER.switch_to.alert.dismiss()
+            return False
+        except exceptions.NoAlertPresentException:
+            return False

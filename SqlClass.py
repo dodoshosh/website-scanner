@@ -1,5 +1,7 @@
 from baseClass import baseClass
 from selenium.webdriver.common.by import By
+from selenium.common import exceptions
+from selenium.webdriver.support import expected_conditions as EC
 
 
 class SQL(baseClass):
@@ -9,8 +11,8 @@ class SQL(baseClass):
         print("Scanning...")
         baseClass.public_DRIVER.get(self.URL) #TODO: add the user's URL
         inputsToInject = baseClass.public_DRIVER.find_elements(By.XPATH, "//input[@type=\"text\" or @type=\"search\" or "
-                                                                            "@type=\"email\" or @type=\"password\" or @type=\"url\"]")
-                                                                                                #specifcly made for the input type we need
+                                                                         "@type=\"email\" or @type=\"password\" or @type=\"url\"]")
+        #specifcly made for the input type we need
         return inputsToInject
 
     def injection(self):
@@ -21,19 +23,29 @@ class SQL(baseClass):
 
         inputsToInject = self.scanning()
 
-        for inputToInj in inputsToInject:
+        for i in range(len(inputsToInject)):
             for sql_query in queries_list:
-                inputToInj.send_keys(sql_query)
-                successed = self.checkSuccess(sql_query)
-                if successed:
-                    print("Vuln Founded\n")
+                try:
+                    inputToInj = inputsToInject[i]
+                    inputToInj.clear()
+                    inputToInj.send_keys(sql_query)
+                    baseClass.public_DRIVER.find_element(By.XPATH, "//input[@type='submit']").click()
+                    successed = self.checkSuccess(sql_query)
+
+                    if successed:
+                        print("Vuln Founded\n")
+                        return
+
+                except exceptions.StaleElementReferenceException:
+                    inputsToInject = self.scanning()
+
 
     def checkSuccess(self, query):
-        print("Checking...")
         if query in baseClass.public_DRIVER.page_source:
             print("SQL Injection Succeeded\n")
             return True
-        elif baseClass.public_DRIVER.current_url() is not self.URL:
+        elif baseClass.public_DRIVER.current_url != self.URL:
             print("SQL Injection Succeeded\n")
             return True
+
         return False
