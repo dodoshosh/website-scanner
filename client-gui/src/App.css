@@ -1,0 +1,32 @@
+.App {
+  text-align: center;
+}
+
+body {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  /* flex-direction: column;
+  align-items: right;
+  justify-content: center;  */
+  font-size: 25px;
+  color: white;
+  padding-left:10px;
+}
+
+.user-input-div {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  /* justify-content: space-between; */
+}
+
+.user-input-div input {
+  background: transparent;
+  margin-left: 10px;
+  border: none;
+  outline: none;
+  font-size: 25px;
+  color: white;
+}
+
