@@ -2,26 +2,28 @@ import { useEffect, useRef } from "react";
 
 export default function UserInput(props) {
 
-    const enterRef = useRef(null);
-
-  useEffect(() => {
-    enterRef.current.addEventListener('keypress', handleKey);
-
-    return () => {
-        enterRef.current.removeEventListener('keypress', handleKey);
-    };
-  }, []);
-
-  const handleKey = (e) => {
-    if (e.key === 'Enter') {
-        props.setInput(e.target.value)
-    }
-  }
-
+    const inputRef = useRef(null);
+  
+    useEffect(() => {
+      inputRef.current.scrollIntoView({ behavior: 'smooth' });
+    }, []);
+  
     return (
-        <div className="user-input-div">
-            <p>{props.name}@user:~$</p>
-            <input type="text" ref={enterRef}/>
-        </div>
+      <div>
+        <p>{props.name}@user:~$</p>
+        <input
+          type="text"
+          ref={inputRef}
+          value={props.value}
+          onChange={event => props.onChange(event.target.value)}
+          onKeyDown={event => {
+            if (event.key === 'Enter') {
+              props.onSubmit();
+            }
+          }}
+          disabled={props.disabled}
+        />
+        {props.response && <p>{props.response}</p>}
+      </div>
     );
 }

@@ -12,10 +12,6 @@ export default function Response(props) {
         key = props.resp
 
     return (
-        <>
-            <p>{CList[key]}</p>
-            {/* <UserInput className="user-input" name={props.name} inp={props.inp} setInput={props.setInput} /> */}
-            {/* <Response className="response" resp={props.resp} inp={props.inp} setInput={props.setInput} name={props.name} /> */}
-        </>
+        <p>{CList[key]}</p>
     );
 }
