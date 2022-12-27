@@ -1,4 +1,6 @@
+
+
 export default function ServerScan() {
-    
-    return 10
+
+    return {score:10, report: "Your website is completly safe."}
 }
