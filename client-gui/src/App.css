@@ -16,9 +16,7 @@ body {
 
 .user-input-div {
   display: flex;
-  flex-flow: row wrap;
   align-items: center;
-  /* justify-content: space-between; */
 }
 
 .user-input-div input {
@@ -28,5 +26,9 @@ body {
   outline: none;
   font-size: 25px;
   color: white;
+}
+
+.user-input-div p {
+  display: block;
 }
 
