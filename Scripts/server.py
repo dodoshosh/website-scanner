@@ -5,8 +5,8 @@ from flask import Flask, jsonify, make_response
 app = Flask(__name__)
 
 
-@app.route('/api/greeting')
-def greeting():
+@app.route('/api/injections')
+def injections():
     response = make_response('Hello from the Python backend!')
     response.headers['Access-Control-Allow-Origin'] = '*'
     import Main
