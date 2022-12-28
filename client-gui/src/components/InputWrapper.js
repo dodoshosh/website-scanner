@@ -9,7 +9,8 @@ import UserInput from './UserInput';
     const [value, setValue] = useState('');
     const [disabled, setDisabled] = useState(false);
     const [clones, setClones] = useState([]);
-    const [lastInput, setLastInput] = useState("");
+    const [lastInputs, setLastInputs] = useState([]);
+    const [index, setIndex] = useState(-1);
   
     function handleChange(newValue) {
       setValue(newValue);
@@ -26,11 +27,20 @@ import UserInput from './UserInput';
       }
 
       if (event.key === 'ArrowUp') {
-        setValue(lastInput);
+        if (index !== 0) {
+          setIndex(index - 1);
+        }
+        setValue(lastInputs[index]);
       }
 
       if (event.key === 'ArrowDown') {
-        setValue('');
+        if (index !== lastInputs.length) {
+          setIndex(index + 1);
+          setValue(lastInputs[index]);
+        }
+        else {
+          setValue('');
+        }
       }
     }
     
@@ -38,9 +48,10 @@ import UserInput from './UserInput';
       const resp = <Response className="response" resp={value} inp={value} name={props.name}/>
       setClones(clones.concat(cloneElement(<MemoizedInput name={props.name} value={value} response={resp} disabled={true} />)));
       
-      if (value !== '\n' && value !== '\t' && value !== ' ' && value !== undefined && value !== '') 
-        setLastInput(value);
-
+      if (value !== '\n' && value !== '\t' && value !== ' ' && value !== lastInputs[lastInputs.length - 1] && value !== '') {
+        setLastInputs(lastInputs.concat(value));
+        setIndex(index + 1);
+      }
       setValue('');
       setDisabled(false);
     }
