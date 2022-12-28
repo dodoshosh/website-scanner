@@ -4,11 +4,11 @@ export const StaticList =
 {
     "help":"Try to type: \"list\"",
     "list":`Here's a list of the supported commands:
-            ls - list directory contents.
-            scan - performs a scan on the specified website for common vulnerabilities.
-            cowsay - ASCII cow that speaks a message.`,
+        ls - list directory contents.
+        scan - performs a scan on the specified website for common vulnerabilities.
+        cowsay - ASCII cow that speaks a message.`,
     "ls":`.
-          ..
+..
             `,
     "Unkown command.":`Unkown command.
 Type \"help\" if you need to.`,
