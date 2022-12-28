@@ -23,10 +23,13 @@ export default function Response(props) {
     return (
         <React.Fragment>
             <div>
+                <pre>
                 {toReturn.split('\n').map((item, key) => {
                     return <p key={key}>{item}</p>;
                 })}
+                </pre>
             </div>
+            
         </React.Fragment>
     );
 }

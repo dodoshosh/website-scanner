@@ -11,7 +11,7 @@ export const StaticList =
           ..
             `,
     "Unkown command.":`Unkown command.
-    Type \"help\" if you need to.`,
+Type \"help\" if you need to.`,
     "":""  
 };
 
@@ -59,9 +59,13 @@ const cowsayHandler = (params) => {
         return (`
         NAME
             cowsay - ASCII cow that speaks a message
-
-        DESCRIPTION
-            cowsay is a simple command-line tool that generates ASCII art of a cow saying a message that you provide. It can be useful for adding some flavor to scripts or for making fun of your friends.
+        
+        SYNOPSIS
+            cowsay [-h] [option] [text]
+        
+            DESCRIPTION
+            cowsay is a simple command-line tool that generates ASCII art of a cow saying a message that you provide.
+            It can be useful for adding some flavor to scripts or for making fun of your friends.
 
         OPTIONS
             -h
@@ -95,9 +99,9 @@ const cowsayHandler = (params) => {
             _______________________ 
             < ${params[0]     }    >
              ----------------------- 
-                    \   ^__^
-                     \  (oo)\_______
-                        (__)\       )\/\
+                    \\   ^__^
+                     \\  (oo)\\_______
+                        (__)\\       )\\/\\
                             ||----w |
                             ||     ||
     `)
@@ -111,9 +115,9 @@ const cowsayHandler = (params) => {
             _______________________ 
             < ${text             }  >
              ----------------------- 
-                    \   ^__^
-                     \  (==)\_______
-                        (__)\       )\/\
+                    \\   ^__^
+                     \\  (==)\\_______
+                        (__)\\       )\\/\\
                             ||----w |
                             ||     ||
             `)
@@ -124,9 +128,9 @@ const cowsayHandler = (params) => {
             ______________________ 
             < ${text             } >
              ---------------------- 
-                    \   ^__^
-                     \  (@@)\_______
-                        (__)\       )\/\
+                    \\   ^__^
+                     \\  (@@)\\_______
+                        (__)\\       )\\/\\
                             ||----w |
                             ||     ||
             `)
@@ -137,9 +141,9 @@ const cowsayHandler = (params) => {
             ______________________ 
             < ${text             } >
              ---------------------- 
-                    \   ^__^
-                     \  (xx)\_______
-                        (__)\       )\/\
+                    \\   ^__^
+                     \\  (xx)\\_______
+                        (__)\\       )\\/\\
                          U  ||----w |
                             ||     ||
             `)
@@ -150,15 +154,15 @@ const cowsayHandler = (params) => {
             _______________________
             < ${text             }  >
              -----------------------
-               \
-                \
+               \\
+                \\
                     .--.
                    |o_o |
                    |:_/ |
-                  //   \ \
+                  //   \\ \\
                  (|     | )
-                /'\_   _/'\
-                \___)=(___/
+                /'\\_   _/'\\
+                \\___)=(___/
                                           
             `)
             break;
@@ -168,9 +172,9 @@ const cowsayHandler = (params) => {
             ______________________ 
             < ${text             } >
              ---------------------- 
-                    \   ^__^
-                     \  (**)\_______
-                        (__)\       )\/\
+                    \\   ^__^
+                     \\  (**)\\_______
+                        (__)\\       )\\/\\
                          U  ||----w |
                             ||     ||
             `)
@@ -181,20 +185,20 @@ const cowsayHandler = (params) => {
             _______________________
             < ${text             }  >
              -----------------------
-                  \                    / \  //\
-                   \    |\___/|      /   \//  \\
-                        /0  0  \__  /    //  | \ \
-                       /     /  \/_/    //   |  \  \
-                       @_^_@'/   \/_   //    |   \   \
-                       //_^_/     \/_ //     |    \    \
-                    ( //) |        \///      |     \     \
-                  ( / /) _|_ /   )  //       |      \     _\
-                ( // /) '/,_ _ _/  ( ; -.    |    _ _\.-~        .-~~~^-.
+                  \\                    / \\  //\\
+                   \\    |\\___/|      /   \\//  \\\\
+                        /0  0  \\__  /    //  | \\ \\
+                       /     /  \\/_/    //   |  \\  \\
+                       @_^_@'/   \\/_   //    |   \\   \\
+                       //_^_/     \\/_ //     |    \\    \\
+                    ( //) |        \\///      |     \\    \\
+                  ( / /) _|_ /   )  //       |      \\     _\\
+                ( // /) '/,_ _ _/  ( ; -.    |    _ _\\.-~        .-~~~^-.
               (( / / )) ,-{        _      -.|.-~-.           .~         .
-             (( // / ))  '/\      /                 ~-. _ .-~      .-~^-.  \
-             (( /// ))      .   {            }                   /      \  \
-              (( / ))     .----~-.\        \-'                 .~         \  . \^-.
-                         ///.----..>        \             _ -~             .  ^-  ^-_
+             (( // / ))  '/\\      /                 ~-. _ .-~      .-~^-.  \\
+             (( /// ))      .   {            }                   /      \\  \\
+              (( / ))     .----~-.\\        \\-'                 .~         \\  . \\^-.
+                         ///.----..>        \\             _ -~             .  ^-  ^-_
                            ///-._ _ _ _ _ _ _}^ - - - - ~                     ~-- ,.-~
                                                                               /.-~          
             
@@ -206,9 +210,9 @@ const cowsayHandler = (params) => {
             ______________________ 
             < ${text             } >
              ---------------------- 
-                    \   ^__^
-                     \  (..)\_______
-                        (__)\       )\/\
+                    \\   ^__^
+                     \\  (..)\\_______
+                        (__)\\       )\\/\\
                             ||----w |
                             ||     ||
             `)
@@ -228,7 +232,7 @@ const scanHandler = (params) => {
             scan - This utility performs a scan on the specified website for common vulnerabilities.
 
         SYNOPSIS
-            scan [URL] [IP]
+            scan [-h] [URL] [IP]
 
         DESCRIPTION
             This utility accepts a URL or IP address and performs a scan on it. 
