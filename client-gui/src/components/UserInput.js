@@ -17,12 +17,8 @@ export default function UserInput(props) {
           ref={inputRef}
           value={props.value}
           onChange={event => props.onChange(event.target.value)}
-          onKeyDown={event => {
-              if (event.key === 'Enter') {
-                  props.onSubmit();
-                }
-            }}
-            disabled={props.disabled}
+          onKeyDown={props.onKeyDown}
+          disabled={props.disabled}
             />
         </div>
         {props.response && <p>{props.response}</p>}

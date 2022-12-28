@@ -11,7 +11,7 @@ function App() {
 
   return (
     <div>
-      <OpenScreen className="open-screen"/>
+      <OpenScreen />
       <InputWrapper name={uName}/>
     </div>
   );

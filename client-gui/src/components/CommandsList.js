@@ -104,10 +104,10 @@ const cowsayHandler = (params) => {
                         (__)\\       )\\/\\
                             ||----w |
                             ||     ||
-    `)
+    `);
     
-    let option = params[0]
-    let text = params[1]
+    let option = params[0];
+    let text = [...params.slice(1)].join(' ');
 
     switch (option) {
         case '-b':
@@ -219,7 +219,19 @@ const cowsayHandler = (params) => {
             break;
 
         default:
-            return "Wrong Parameter. Try \"cowsay -h\" For Help."
+            if (option.includes('-'))
+                return "Wrong Parameter. Try \"cowsay -h\" For Help.";
+
+            return (`
+            _______________________ 
+            < ${option + ' ' + text}    >
+             ----------------------- 
+                    \\   ^__^
+                     \\  (oo)\\_______
+                        (__)\\       )\\/\\
+                            ||----w |
+                            ||     ||
+    `);
     }
 }   
 

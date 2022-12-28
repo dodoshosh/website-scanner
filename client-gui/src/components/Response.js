@@ -22,7 +22,7 @@ export default function Response(props) {
     const toReturn = foundCommand ? commandHandler(props.resp) : StaticList[key];
     return (
         <React.Fragment>
-            <div>
+            <div className="response-div">
                 <pre>
                 {toReturn.split('\n').map((item, key) => {
                     return <p key={key}>{item}</p>;
