@@ -24,11 +24,11 @@ class XSS(baseClass):
         inputsToInject = self.scanning()
 
         for i in range(len(inputsToInject)):
-            for sql_query in queries_list:
+            for xss_query in queries_list:
                 try:
                     inputToInj = inputsToInject[i]
                     inputToInj.clear()
-                    inputToInj.send_keys(sql_query)
+                    inputToInj.send_keys(xss_query)
                     baseClass.public_DRIVER.find_element(By.XPATH, "//input[@type='submit']").click()
                     successed = self.checkSuccess()
 
