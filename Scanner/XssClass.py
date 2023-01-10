@@ -17,7 +17,7 @@ class XSS(baseClass):
         return inputsToInject
 
     def injection(self):
-        File_object = open(r".\xss_queries.txt", "r+")
+        File_object = open(r"../Scanner/xss_queries.txt", "r+")
         file_data = File_object.read()
         queries_list = file_data.split('^')
 

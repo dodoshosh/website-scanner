@@ -3,18 +3,15 @@ from XssClass import XSS
 from selenium.common import exceptions
 from baseClass import baseClass
 
-def main():
-    print("Enter the URL: ")
-    URL = input()
+def WebScan(url):
 
     try:
-        Sql = SQL(URL)
+        Sql = SQL(url)
         Sql.injection()
 
-        Xss = XSS(URL)
+        Xss = XSS(url)
         Xss.injection()
+
+        return({"report":"Succsesfully Scan", "score":'10'})
     except exceptions.InvalidArgumentException:
-        print("URL is broken... \nMay be try again..")
-        main()
-if __name__ == "__main__":
-    main()
+        return({"report":"URL is broken...", "score":'?'})

@@ -17,7 +17,7 @@ class SQL(baseClass):
 
     def injection(self):
         File_object = open(
-            r".\sql_queries.txt", "r+")
+            r"../Scanner/sql_queries.txt", "r+")
         file_data = File_object.read()
         queries_list = file_data.split('^')
 
