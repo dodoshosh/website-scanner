@@ -1,0 +1,23 @@
+[build-system]
+requires = ["scapy"]
+build-backend = ""
+
+[project]
+name = "Scanner"
+version = "0.1.0"
+authors = [
+  { name="Yonadav Mizrahi" },
+  { name="Ido Shoshani" },
+]
+description = "Web Vulnerabilities Scanner"
+readme = "README.md"
+requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+"Homepage" = ""
+"Bug Tracker" = ""
