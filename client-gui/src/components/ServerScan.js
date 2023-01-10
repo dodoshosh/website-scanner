@@ -1,6 +1,8 @@
 
 
-export default function ServerScan() {
-
-    return {score:10, report: "Your website is completly safe."}
+export default async function ServerScan(url) {
+    let load = await fetch('http://localhost:8080/api/injections');
+    load = await load.text();
+    load = JSON.parse(load);
+    return load
 }

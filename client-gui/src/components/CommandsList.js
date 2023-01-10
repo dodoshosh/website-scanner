@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import ServerScan from "./ServerScan";
 
 export const StaticList = 
@@ -17,7 +18,7 @@ Type \"help\" if you need to.`,
 
 export const CommandList = ["scan","cowsay"];
 
-export function commandHandler(userinput)
+export async function commandHandler(userinput)
 {
     let splited = splitCommand(userinput);
     
@@ -25,12 +26,12 @@ export function commandHandler(userinput)
     splited.splice(0,1);
     const params = splited;
 
-    console.log(command, params);
+    // console.log(command, params);
 
     switch(command)
     {
         case "scan":
-            return scanHandler(params);    
+            return await scanHandler(params);    
             break;
 
         case "cowsay":
@@ -52,7 +53,7 @@ const splitCommand = (stringInp) => {
 }
 
 const cowsayHandler = (params) => {
-    console.log("omg")
+    // console.log("omg")
     if (params.length === 0)
         return "Error: Missing Parameters. Try \"cowsay -h\" For Help."
     else if (params[0] === "-h")
@@ -235,7 +236,7 @@ const cowsayHandler = (params) => {
     }
 }   
 
-const scanHandler = (params) => {
+const scanHandler = async (params) => {
     if (params.length === 0)
         return (`Error: Missing Parameters. Try \"scan -h\" For Help.`);
     else if (params[0] === "-h")
@@ -260,8 +261,10 @@ const scanHandler = (params) => {
             Ido Shoshani and Yonadav Mizrahi.
 
         `);
+
+    const results = await ServerScan(params[0]);
+    console.log(results);
     
-    const results = ServerScan(params[0])
     return(`
 
         Score: ${results.score} / 10.
@@ -269,5 +272,5 @@ const scanHandler = (params) => {
         Report: 
         ${results.report}
 
-    `);
+        `);
 }

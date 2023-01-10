@@ -6,7 +6,7 @@ export default function UserInput(props) {
   
     useEffect(() => {
       inputRef.current.scrollIntoView({ behavior: 'smooth' });
-    }, []);
+    }, [inputRef]);
   
     return (
       <div>
