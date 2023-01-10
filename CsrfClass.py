@@ -16,3 +16,6 @@ class CSRF(baseClass):
         baseClass.public_DRIVER.get(self.URL)
                                                                                        # specifcly made for the input type we need
         return inputsToInject
+        
+    def checkSuccess(self):
+        return #Will be implemented in the next weeks
