@@ -14,7 +14,6 @@ class SQL(baseClass):
                                                                          "@type=\"email\" or @type=\"password\" or @type=\"url\"]")
         #specifcly made for the input type we need
         return inputsToInject
-
     def injection(self):
         File_object = open(
             r".\sql_queries.txt", "r+")
