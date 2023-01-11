@@ -33,5 +33,5 @@ class CSRF(baseClass):
                 except exceptions.StaleElementReferenceException:
                     inputsToInject = self.scanning()
 
-    def checkSuccess(self):
+    def checkSuccess(self, header, requests_headers):
         return  # Will be implemented in the next weeks
