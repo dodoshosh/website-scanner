@@ -40,6 +40,9 @@ class CI(baseClass):
                     inputsToInject = self.scanning()
 
 
-
     def checkSuccess(self):
-        return #Will be implemented in the next weeks
+        string_of_validation='aiwefwlguh'
+        if  string_of_validation in baseClass.public_DRIVER.page_source:
+            print("Command Injection Succeeded\n")
+            return True
+        return False
