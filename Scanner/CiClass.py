@@ -17,7 +17,7 @@ class CI(baseClass):
         return inputsToInject
 
     def injection(self):
-        File_object = open(r".\ci_queries.txt", "r+")
+        File_object = open(r"..\Scanner\ci_queries.txt", "r+")
         file_data = File_object.read()
         queries_list = file_data.split('^')
 
