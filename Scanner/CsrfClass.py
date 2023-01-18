@@ -21,17 +21,21 @@ class CSRF(baseClass):
 
         headersToCheck = self.scanning()
 
+        found = False
+
         for i in range(len(headersToCheck)):
             for header in headers_list:
                 try:
-                    successed = self.checkSuccess(header, headersToCheck)
-
-                    if successed:
-                        print("Vuln Founded\n")
-                        return
+                    found = self.checkSuccess(header, headersToCheck)
 
                 except exceptions.StaleElementReferenceException:
                     inputsToInject = self.scanning()
 
+        if found is False:
+            print("Vuln Founded\n")
+            return
+
     def checkSuccess(self, header, requests_headers):
-        return  # Will be implemented in the next weeks
+        if (header in requests_headers):
+            return True
+        return False
